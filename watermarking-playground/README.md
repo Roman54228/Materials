@@ -9,6 +9,26 @@ pinned: false
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
+## Локальный запуск
+
+Нужен только современный браузер и локальный HTTP-сервер: сборка и `npm install`
+не требуются.
+
+```bash
+cd watermarking-playground
+python3 -m http.server 8000
+```
+
+Откройте [http://localhost:8000](http://localhost:8000) в браузере. Не
+запускайте `index.html` двойным кликом: приложению нужен HTTP-сервер для
+модульного Web Worker.
+
+При первом запуске выберите одну из моделей **SmolLM2** — она будет скачана из
+Hugging Face и затем закэширована браузером. Модель **Qwen3-0.6B** по умолчанию
+рассчитана на локальные веса в `models/qwen3-0.6b-onnx/` и WebGPU; если весов в
+этой папке нет, переключитесь на SmolLM2. Для Qwen используйте Chrome или
+другой Chromium-браузер с поддержкой WebGPU.
+
 ## Checking pasted text
 
 The **Check a text** panel runs the same detector used for generated output:
